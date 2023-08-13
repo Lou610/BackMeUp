@@ -4,13 +4,13 @@ namespace BackUpMe
 {
     public class WindowsBackgroundService : BackgroundService
     {
-        private readonly JokeService _jokeService;
+        private readonly FTPService _fTPService;
         private readonly ILogger<WindowsBackgroundService> _logger;
 
        public WindowsBackgroundService(
-        JokeService jokeService,
+        FTPService ftpService,
         ILogger<WindowsBackgroundService> logger) =>
-        (_jokeService, _logger) = (jokeService, logger);
+        (_fTPService, _logger) = (ftpService, logger);
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -18,10 +18,10 @@ namespace BackUpMe
             {
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    string joke = _jokeService.GetJoke();
-                    _logger.LogWarning("{Joke}", joke);
+                    string fileResult = _fTPService.GetFiles();
+                    _logger.LogWarning("{File Upload}", fileResult);
 
-                    await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+                    await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
                 }
             }
             catch (TaskCanceledException)

@@ -15,9 +15,11 @@ namespace BackUpMe
              })
              .ConfigureServices((context, services) =>
              {
-                 LoggerProviderOptions.RegisterProviderOptions< EventLogSettings, EventLogLoggerProvider>(services);
+#pragma warning disable CA1416 // Validate platform compatibility
+                 LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
+#pragma warning restore CA1416 // Validate platform compatibility
 
-                 services.AddSingleton<JokeService>();
+                 services.AddSingleton<FTPService>();
                  services.AddHostedService<WindowsBackgroundService>();
 
                  // See: https://github.com/dotnet/runtime/issues/47303
@@ -27,6 +29,11 @@ namespace BackUpMe
                          context.Configuration.GetSection("Logging"));
                  });
              });
+
+
+
+
+
 
             var host = builder.Build();
             host.Run();
