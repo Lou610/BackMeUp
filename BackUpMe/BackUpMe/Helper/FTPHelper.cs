@@ -21,7 +21,7 @@ namespace BackUpMe.Helper
             filePath = GetFilePath();
 
 
-            GreateDirectory(filePath.Path);
+            GreateDirectory(filePath.Path!);
 
 
 
@@ -63,6 +63,8 @@ namespace BackUpMe.Helper
         public static void Upload(string folderPath, FTPModel fTPModel)
         {
             string[] files = Directory.GetFiles(folderPath);
+            EmailHelper emailHelper = new EmailHelper();
+
 
             foreach (string file in files)
             {
@@ -72,9 +74,11 @@ namespace BackUpMe.Helper
                 string uri = fTPModel.FTPServer + "/" + fileInf.Name;
                 
                 FtpWebRequest reqFTP;
-                
+
                 // Create FtpWebRequest object from the Uri provided
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(fTPModel.FTPServer + "/" + fileInf.Name));
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
 
                 // Provide the WebPermission Credintials
                 reqFTP.Credentials = new NetworkCredential(fTPModel.FTPUsername, fTPModel.FTPPassword);
@@ -121,10 +125,13 @@ namespace BackUpMe.Helper
                     // Close the file stream and the Request Stream
                     strm.Close();
                     fs.Close();
+
+                    emailHelper.SendEmail(fileInf.Name);
+
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex);
                 }
                 DeleteFile(file);
 
