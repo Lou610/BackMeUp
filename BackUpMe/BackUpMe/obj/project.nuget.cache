@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xL/I3jwnCzhcNXtblUPZXwJuVWZGIBYuJ6UnqjYF9exCxijhkp8bhbDNdIpjQ7eED3QTISMghq7eIC3C4CgmqQ==",
+  "dgSpecHash": "/9VITpPTUMVxuvC54/1eIJs8GNVdrNw1Tk9zp4XreSnsOKFS4+aghp36KPmglz8Z0L9BepMg+qhbPNuycexm3g==",
   "success": true,
   "projectFilePath": "F:\\BackMeUp\\BackUpMe\\BackUpMe\\BackUpMe.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\LouGroenewald\\.nuget\\packages\\fluentftp\\47.1.0\\fluentftp.47.1.0.nupkg.sha512",
     "C:\\Users\\LouGroenewald\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0-preview.7.23375.6\\microsoft.extensions.configuration.8.0.0-preview.7.23375.6.nupkg.sha512",
     "C:\\Users\\LouGroenewald\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0-preview.7.23375.6\\microsoft.extensions.configuration.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
     "C:\\Users\\LouGroenewald\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0-preview.7.23375.6\\microsoft.extensions.configuration.binder.8.0.0-preview.7.23375.6.nupkg.sha512",
